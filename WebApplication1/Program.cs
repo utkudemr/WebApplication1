@@ -3,7 +3,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.WebHost.ConfigureKestrel(options =>
 {
     options.ListenAnyIP(5010);
-    options.ListenAnyIP(5011); 
 });
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
