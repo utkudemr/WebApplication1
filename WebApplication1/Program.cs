@@ -4,6 +4,11 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenAnyIP(5010);
+    options.ListenAnyIP(5011); 
+});
 
 var app = builder.Build();
 
@@ -14,7 +19,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 var summaries = new[]
 {
