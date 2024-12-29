@@ -1,9 +1,11 @@
 var builder = WebApplication.CreateBuilder(args);
 
+var port = Environment.GetEnvironmentVariable("PORT") ?? "5012";
 builder.WebHost.ConfigureKestrel(options =>
 {
-    options.ListenAnyIP(5012);
+    options.ListenAnyIP(int.Parse(port));
 });
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
